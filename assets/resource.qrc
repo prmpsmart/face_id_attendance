@@ -1,0 +1,14 @@
+<RCC>
+  <qresource>
+    <file alias="cancel">cancel.png</file>
+    <file alias="cancel_n">cancel_n.png</file>
+    <file alias="check">check.png</file>
+    <file alias="check_n">check_n.png</file>
+    <file alias="face">face.png</file>
+    <file alias="student">student.jpg</file>
+    <file alias="fingerprint">fingerprint.png</file>
+    <file alias="frame">frame.png</file>
+    <file alias="logo">logo.png</file>
+    <file alias="arrow-down">arrow-down.png</file>
+  </qresource>
+</RCC>
