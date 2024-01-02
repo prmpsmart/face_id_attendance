@@ -25,6 +25,7 @@ class ApprovedScreen(BaseScreen):
 
     def showEvent(self, e):
         QTimer.singleShot(
-            1000,
-            self.eduttend.showHomeScreen,
+            1500,
+            # self.eduttend.showHomeScreen,
+            self.eduttend.showCourseSelectionScreen,
         )

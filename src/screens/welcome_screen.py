@@ -20,4 +20,5 @@ class WelcomeScreen(BaseScreen):
         self.sign_in_button.setObjectName("action")
         self.sign_in_button.setFixedSize(260, 50)
         self.sign_in_button.move(30, 361)
-        self.sign_in_button.clicked.connect(self.eduttend.showSignInScreen)
+        # self.sign_in_button.clicked.connect(self.eduttend.showSignInScreen)
+        self.sign_in_button.clicked.connect(self.eduttend.showFaceIDLoginScreen)

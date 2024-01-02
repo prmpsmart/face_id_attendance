@@ -46,6 +46,13 @@ class FaceIDCaptureScreen(CamScreen):
 
         self.hide_time = 1000
 
+        
+        self.capture_face_button = QPushButton("Capture Face", self)
+        self.capture_face_button.setObjectName("action")
+        self.capture_face_button.setFixedSize(260, 50)
+        self.capture_face_button.move(33, 375)
+        self.capture_face_button.clicked.connect(self.camera.toggle)
+
     # def showEvent(self, e):
     #     QTimer.singleShot(self.hide_time, self.show_captured)
 

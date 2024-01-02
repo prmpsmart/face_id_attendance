@@ -29,7 +29,7 @@ class DenyScreen(BaseScreen):
         self.deny_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.deny_text.move(150, 349)
 
-        self.deny_text2 = QLabel("Placing your finger and face well", self)
+        self.deny_text2 = QLabel("positioning your face well", self)
         self.deny_text2.setObjectName("deny_text")
         self.deny_text2.setFixedSize(185, 16)
         self.deny_text2.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -40,9 +40,10 @@ class DenyScreen(BaseScreen):
         self.deny_text3.setFixedSize(115, 14)
         self.deny_text3.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.deny_text3.move(103, 379)
+        self.deny_text3.hide()
 
     def showEvent(self, e):
         QTimer.singleShot(
-            1000,
-            self.eduttend.showApprovedScreen,
+            3000,
+            self.eduttend.showFaceIDLoginScreen,
         )

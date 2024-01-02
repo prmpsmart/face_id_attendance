@@ -2,7 +2,7 @@ from ..shared.base_screen import *
 
 
 class CourseSelectionScreen(BaseScreen):
-    def __init__(self, *args):
+    def __init__(self, *args, profile: Profile):
         super().__init__(*args)
 
         self.course_selection_text = QLabel("Course", self)
@@ -17,7 +17,7 @@ class CourseSelectionScreen(BaseScreen):
 
         self.image_label = QLabel(self)
         self.image_label.setObjectName("image_label")
-        pixmap = get_rounded_image()
+        pixmap = get_rounded_image(profile.image)
         self.image_label.setPixmap(pixmap)
         self.image_label.setFixedSize(pixmap.size())
         self.image_label.move(250, 35)

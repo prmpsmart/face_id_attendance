@@ -1,58 +1,14 @@
 from PySide6.QtGui import *
 from PySide6.QtCore import *
+from PySide6.QtGui import QHideEvent, QMouseEvent
 from PySide6.QtWidgets import *
 from PySide6.QtWidgets import QWidget
 from . import resource
 
 
-class MainWindow:
-    def showWelcomeScreen(self):
-        raise NotImplementedError
-
-    def showSignInScreen(self):
-        raise NotImplementedError
-
-    def showFingerprintLoginScreen(self):
-        raise NotImplementedError
-
-    def showFaceIDLoginScreen(self):
-        raise NotImplementedError
-
-    def showApprovedScreen(self):
-        raise NotImplementedError
-
-    def showDenyScreen(self):
-        raise NotImplementedError
-
-    def showHomeScreen(self):
-        raise NotImplementedError
-
-    def showCourseSelectionScreen(self):
-        raise NotImplementedError
-
-    def showTimerScreen(self):
-        raise NotImplementedError
-
-    def showChooseAttendanceScreen(self):
-        raise NotImplementedError
-
-    def showFingerprintFeedbackScreen(self):
-        raise NotImplementedError
-
-    def showFaceIDFeedbackScreen(self):
-        raise NotImplementedError
-
-    def showDataCaptureScreen(self):
-        raise NotImplementedError
-
-    def showFaceIDCaptureScreen(self):
-        raise NotImplementedError
-
-    def showFingerprinCaptureScreen(self):
-        raise NotImplementedError
-
-
 class Notify(QFrame):
+    hidden = Signal()
+
     def __init__(self, parent: QWidget):
         super().__init__(parent)
 
@@ -137,11 +93,19 @@ class Notify(QFrame):
 
         self.show()
 
-        QTimer.singleShot(500, self.hide)
+        # QTimer.singleShot(500, self.hide)
+
+    def mousePressEvent(self, event: QMouseEvent) -> None:
+        self.hide()
+        return super().mousePressEvent(event)
+
+    def hideEvent(self, event: QHideEvent) -> None:
+        self.hidden.emit()
+        return super().hideEvent(event)
 
 
-def get_rounded_image() -> QPixmap:
-    pixmap = QPixmap(":/student").scaled(40, 40)
+def get_rounded_image(image=None) -> QPixmap:
+    pixmap = QPixmap(image or ":/student").scaled(40, 40)
 
     target_pixmap = QPixmap(pixmap.size())
     target_pixmap.fill(Qt.transparent)
@@ -166,3 +130,9 @@ def get_rounded_image() -> QPixmap:
     painter.end()
 
     return target_pixmap
+
+
+class Profile:
+    def __init__(self, image: QImage):
+        self.image = image
+        self.time: int = 0

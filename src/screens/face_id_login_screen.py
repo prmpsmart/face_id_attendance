@@ -1,5 +1,6 @@
 from ..shared.base_screen import *
 from ..shared.cam_screen import CamScreen
+from ..shared.spinner import PRMP_QSpinner
 
 
 class FaceIDLoginScreen(CamScreen):
@@ -23,15 +24,22 @@ class FaceIDLoginScreen(CamScreen):
         self.face_id_login_text2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.face_id_login_text2.move(60, 325)
 
-        self.capture_face_button = QPushButton("Capture Face", self)
+        # self.capture_face_button = QPushButton("Capture Face", self)
+        self.capture_face_button = QPushButton("Login", self)
         self.capture_face_button.setObjectName("action")
         self.capture_face_button.setFixedSize(260, 50)
         self.capture_face_button.move(33, 375)
-        self.capture_face_button.clicked.connect(self.showCapture)
+        self.capture_face_button.clicked.connect(self.make_request)
 
-    def showCapture(self, e):
-        if self.camera.camera.isActive():
-            self.camera.stop()
-        else:
-            self.camera.start()
-        self.eduttend.showDenyScreen()
+        self.spiner = PRMP_QSpinner(self, disableParentWhenSpinning=True)
+
+    def make_request(self):
+        self.camera.stop()
+        self.spiner.start()
+        return super().make_request(3000)
+
+    def on_request_timeout(self):
+        self.spiner.stop()
+        self.eduttend.showApprovedScreen(Profile(self.camera.image))
+        # self.eduttend.showDenyScreen()
+        return super().on_request_timeout()

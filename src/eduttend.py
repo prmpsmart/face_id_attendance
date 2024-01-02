@@ -17,18 +17,32 @@ from .screens.face_id_capture_screen import FaceIDCaptureScreen
 from .screens.fingerprint_capture_screen import FingerprinCaptureScreen
 
 
-class Eduttend(QMainWindow, MainWindow):
+class Eduttend(QMainWindow):
     def __init__(self, title: str) -> None:
         QMainWindow.__init__(self)
 
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon(":/logo"))
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
-        # self.setCentralWidget(LaunchScreen(self))
-        self.showFaceIDCaptureScreen()
+        # self.showLaunchScreen()
+
+        # self.showCourseSelectionScreen()
+        self.profile: Profile = Profile(None)
+
+        # self.showTimerScreen()
+        # self.showFaceIDLoginScreen()
+        self.showFaceIDFeedbackScreen(15)
 
     def mousePressEvent(self, a0) -> None:
-        QApplication.instance().quit()
+        # name = self.centralWidget().__class__.__name__
+        # image = self.grab(self.rect()).toImage()
+        # image.save(f"screenshots/{name}-{uuid.uuid4()}.png", "png")
+        # QApplication.instance().quit()
+        ...
+
+    def showLaunchScreen(self):
+        self.setCentralWidget(LaunchScreen(self))
 
     def showWelcomeScreen(self):
         self.setCentralWidget(WelcomeScreen(self))
@@ -42,7 +56,8 @@ class Eduttend(QMainWindow, MainWindow):
     def showFaceIDLoginScreen(self):
         self.setCentralWidget(FaceIDLoginScreen(self))
 
-    def showApprovedScreen(self):
+    def showApprovedScreen(self, profile: Profile):
+        self.profile = profile
         self.setCentralWidget(ApprovedScreen(self))
 
     def showDenyScreen(self):
@@ -52,7 +67,7 @@ class Eduttend(QMainWindow, MainWindow):
         self.setCentralWidget(HomeScreen(self))
 
     def showCourseSelectionScreen(self):
-        self.setCentralWidget(CourseSelectionScreen(self))
+        self.setCentralWidget(CourseSelectionScreen(self, profile=self.profile))
 
     def showTimerScreen(self):
         self.setCentralWidget(TimerScreen(self))
@@ -63,8 +78,9 @@ class Eduttend(QMainWindow, MainWindow):
     def showFingerprintFeedbackScreen(self):
         self.setCentralWidget(FingerprintFeedbackScreen(self))
 
-    def showFaceIDFeedbackScreen(self):
-        self.setCentralWidget(FaceIDFeedbackScreen(self))
+    def showFaceIDFeedbackScreen(self, time: int):
+        self.profile.time = time
+        self.setCentralWidget(FaceIDFeedbackScreen(self, profile=self.profile))
 
     def showDataCaptureScreen(self):
         self.setCentralWidget(DataCaptureScreen(self))
@@ -74,4 +90,3 @@ class Eduttend(QMainWindow, MainWindow):
 
     def showFingerprinCaptureScreen(self):
         self.setCentralWidget(FingerprinCaptureScreen(self))
-

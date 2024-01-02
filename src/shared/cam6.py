@@ -125,6 +125,12 @@ class CameraWidget(QLabel):
     def start(self):
         self.camera.start()
 
+    def toggle(self):
+        if self.camera.isActive():
+            self.camera.stop()
+        else:
+            self.camera.start()
+
     def stop(self):
         self.camera.stop()
 

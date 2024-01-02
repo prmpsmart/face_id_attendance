@@ -30,7 +30,7 @@ class EduttendApp(QApplication):
                     letter-spacing: 0em;
                     color: #FBFDFE;
                     background: #053DC8;
-                    border-radius: 10px
+                    border-radius: 10px;
                 }
                 QPushButton#action:hover {
                     background: #0435a6;
@@ -226,6 +226,32 @@ class EduttendApp(QApplication):
                     border-bottom: 2px solid #053DC8;
                     padding: 10px;
                     font-size: 18px;
+                }
+
+
+                QPushButton#countdown_time {
+                    font-family: Raleway;
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 28px;
+                    letter-spacing: 0em;
+                    color: #053DC8;
+                    border-radius: 0px;
+                    border-bottom: 2px solid #053DC8;
+                }
+                QPushButton#countdown_time:hover {
+                    background: #e1e1e1;
+                    border-radius: 10px;
+                }
+                QPushButton#countdown_time:pressed {
+                    background: #e1e1e1;
+                    color: white;
+                    border-radius: 10px;
+                }
+                QPushButton#countdown_time:checked {
+                    background: #053DC8;
+                    color: white;
+                    border-radius: 10px;
                 }
 
 
