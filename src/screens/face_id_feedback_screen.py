@@ -78,7 +78,6 @@ class FaceIDFeedbackScreen(CamScreen):
         # self.notify.show_rejected()
         # self.notify.show_not_registered()
 
-        # self.eduttend.showDenyScreen()
         return super().on_request_timeout()
 
     def notify_hidden(self):
