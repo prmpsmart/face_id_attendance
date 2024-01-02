@@ -28,12 +28,12 @@ class CourseSelectionScreen(BaseScreen):
 
         self.select_combobox.addItems(
             [
-                "EEE 501",
-                "EEE 502",
-                "EEE 503",
-                "EEE 504",
-                "EEE 505",
-                "EEE 506",
+                "IPE 501",
+                "IPE 502",
+                "IPE 503",
+                "IPE 504",
+                "IPE 505",
+                "IPE 506",
             ]
         )
 

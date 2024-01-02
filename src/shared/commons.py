@@ -36,23 +36,24 @@ class Notify(QFrame):
         effect.setColor(QColor(color))
         self.setGraphicsEffect(effect)
 
-    def show_accepted(self):
-        self.update_notify(error=False)
+    def show_accepted(self, interval: int = 0):
+        self.update_notify(error=False, interval=interval)
 
-    def show_captured(self):
-        self.update_notify(error=False)
+    def show_captured(self, interval: int = 0):
+        self.update_notify(error=False, interval=interval)
 
-    def show_rejected(self):
-        self.update_notify()
+    def show_rejected(self, interval: int = 0):
+        self.update_notify(interval=interval)
 
-    def show_not_registered(self):
-        self.update_notify(not_found=True)
+    def show_not_registered(self, interval: int = 0):
+        self.update_notify(not_found=True, interval=interval)
 
     def update_notify(
         self,
         captured: bool = False,
         error: bool = True,
         not_found: bool = False,
+        interval: int = 0,
     ):
         if error:
             icon = "cancel_n"
@@ -93,7 +94,8 @@ class Notify(QFrame):
 
         self.show()
 
-        # QTimer.singleShot(500, self.hide)
+        if interval:
+            QTimer.singleShot(interval, self.hide)
 
     def mousePressEvent(self, event: QMouseEvent) -> None:
         self.hide()

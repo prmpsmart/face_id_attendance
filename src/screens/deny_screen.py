@@ -44,6 +44,7 @@ class DenyScreen(BaseScreen):
 
     def showEvent(self, e):
         QTimer.singleShot(
-            3000,
-            self.eduttend.showFaceIDLoginScreen,
+            1500,
+            self.eduttend.showCourseSelectionScreen,
+            # self.eduttend.showFaceIDLoginScreen,
         )

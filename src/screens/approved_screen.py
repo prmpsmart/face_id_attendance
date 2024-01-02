@@ -27,5 +27,6 @@ class ApprovedScreen(BaseScreen):
         QTimer.singleShot(
             1500,
             # self.eduttend.showHomeScreen,
-            self.eduttend.showCourseSelectionScreen,
+            # self.eduttend.showCourseSelectionScreen,
+            self.eduttend.showDenyScreen,
         )

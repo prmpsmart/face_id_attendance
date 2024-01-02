@@ -39,13 +39,14 @@ class CamScreen(BaseScreen):
         # self.capture_face_button.clicked.connect(self.showCapture)
 
         self.buttons_widget = QWidget(self)
-        self.buttons_widget.move(10, 430)
+        self.buttons_widget.setFixedWidth(280)
+        self.buttons_widget.move(20, 430)
 
-        hlay = QHBoxLayout(self.buttons_widget)
+        self.hlay = QHBoxLayout(self.buttons_widget)
 
         for cam in self.available_cameras:
             button = PushButton(cam, self)
-            hlay.addWidget(button)
+            self.hlay.addWidget(button)
 
     def image_receiver(self, image: QImage):
         ...

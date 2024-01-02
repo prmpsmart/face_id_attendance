@@ -25,14 +25,15 @@ class Eduttend(QMainWindow):
         self.setWindowIcon(QIcon(":/logo"))
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
-        # self.showLaunchScreen()
 
         # self.showCourseSelectionScreen()
         self.profile: Profile = Profile(None)
 
         # self.showTimerScreen()
         # self.showFaceIDLoginScreen()
+        # self.showLaunchScreen()
         self.showFaceIDFeedbackScreen(15)
+        # self.showCourseSelectionScreen()
 
     def mousePressEvent(self, a0) -> None:
         # name = self.centralWidget().__class__.__name__

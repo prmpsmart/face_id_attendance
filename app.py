@@ -263,7 +263,7 @@ class EduttendApp(QApplication):
 
         self.win.setFixedSize(width, height)
         # self.win.move(300, 100)
-        self.win.move(1299, 36)
+        # self.win.move(1299, 36)
         self.win.show()
 
 

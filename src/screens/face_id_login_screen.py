@@ -36,7 +36,7 @@ class FaceIDLoginScreen(CamScreen):
     def make_request(self):
         self.camera.stop()
         self.spiner.start()
-        return super().make_request(3000)
+        return super().make_request(1000)
 
     def on_request_timeout(self):
         self.spiner.stop()
